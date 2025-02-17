@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
+aws:
+  region: eu-north-1
+  s3:
+    mock: true
+    buckets:
+      customer: fs-wedevloop-customer-test
