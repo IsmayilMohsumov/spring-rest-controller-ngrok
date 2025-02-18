@@ -9,3 +9,16 @@ aws:
     mock: true
     buckets:
       customer: fs-wedevloop-customer-test
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://facesdmc-wedevloop-database.h.aivencloud.com:11326/defaultdb?sslmode=require
+    username: avnadmin
+    password: AVNS_gfaKvSHy3x1yT8yps75
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update

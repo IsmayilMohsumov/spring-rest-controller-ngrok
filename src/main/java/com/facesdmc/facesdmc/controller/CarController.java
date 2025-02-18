@@ -1,23 +1,53 @@
 package com.facesdmc.facesdmc.controller;
 
 import com.facesdmc.facesdmc.model.Car;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
+@RequestMapping("/api/cars")
 @RestController
+@CrossOrigin(origins = "*")
 public class CarController {
 
-    @GetMapping({"/cars","/"})
+    private static final String BASE_IMAGE_URL = "https://15d3-185-81-86-29.ngrok-free.app/api/images/";
+
+    @GetMapping({"/cars", "/"})
     public List<Car> getCars() {
-        return Arrays.asList(
-                new Car(1L, "Toyota", "Camry", 2021, "White", "Hybrid", 208, 30000.00),
-                new Car(2L, "Honda", "Civic", 2020, "Black", "Petrol", 158, 25000.00),
-                new Car(3L, "Ford", "Mustang", 2019, "Red", "Petrol", 450, 55000.00),
-                new Car(4L, "Tesla", "Model S", 2022, "Blue", "Electric", 670, 80000.00),
-                new Car(5L, "BMW", "M3", 2018, "Silver", "Petrol", 425, 60000.00)
+        Car car1 = new Car(
+                1,
+                "economy",
+                generateImageUrl("Economy"),
+                3,
+                3,
+                4.8,
+                "€32.59",
+                null,
+                Arrays.asList("Best Value"),
+                Arrays.asList("Meet & Greet included", "Free Waiting time", "Door-to-door")
         );
+
+        Car car2 = new Car(
+                2,
+                "we",
+                generateImageUrl("We"),
+                4,
+                4,
+                4.5,
+                "€42.00",
+                "€40.00",
+                Arrays.asList("Popular Choice"),
+                Arrays.asList("Air Conditioning", "Free WiFi")
+        );
+
+        return Arrays.asList(car1, car2);
+    }
+
+    private String generateImageUrl(String name) {
+        return BASE_IMAGE_URL + name.toLowerCase() + ".jpg";
     }
 }
 
