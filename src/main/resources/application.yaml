@@ -13,11 +13,10 @@ aws:
 
 spring:
   datasource:
-    url: jdbc:postgresql://facesdmc-wedevloop-database.h.aivencloud.com:11326/defaultdb?sslmode=require
-    username: avnadmin
-    password: AVNS_gfaKvSHy3x1yT8yps75
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
